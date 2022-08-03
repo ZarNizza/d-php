@@ -1,0 +1,46 @@
+version: '2'
+services:
+    nginx:
+        container_name: m-nginx
+        image: nginx
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./hosts:/etc/nginx/conf.d
+            - ./www:/var/www
+            - ./logs:/var/log/nginx
+        links:
+            - php
+    php:
+        container_name: m-php
+        build: ./images/php
+        links:
+            - mysql
+        volumes:
+            - ./www:/var/www
+    mysql:
+        container_name: m-mysql
+        image: mysql
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./mysql:/var/lib/mysql
+        command: mysqld --default-authentication-plugin=mysql_native_password
+        environment:
+            MYSQL_ROOT_PASSWORD: 123
+            MYSQL_DATABASE: m_db
+            MYSQL_USER: db_user
+            MYSQL_PASSWORD: 456
+    phpmyadmin:
+        container_name: m-pma
+        image: phpmyadmin
+        links:
+            - mysql
+        environment:
+            PMA_HOST: mysql
+            PMA_PORT: 3306
+            PMA_ARBITRARY: 1
+        restart: always
+        ports:
+            - 8080:80

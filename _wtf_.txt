@@ -1,0 +1,10 @@
+based on https://github.com/PHPtoday-ru/docker-local-conf
+
+
+
+Docker + nginx + PHP + MySQL + phpMyAdmin
+
+look at browser:
+yohoho.mvn
+hohoho.mvn
+localhost:8080 (phpmyadmin, mysql root 123)
