@@ -1,3 +1,4 @@
+<h3>Docker: Nginx + PHP + MySQL + phpMyAdmin </h3>
 <p>private project, opened due GH politic reasons</p>
 
 <p>Example of Docker batch for 2 php-based sites (yohoho.mvn & hohoho.mvn) with Nginx, MySQL and phpMyAdmin.</p>
